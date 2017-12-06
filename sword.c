@@ -1,6 +1,8 @@
 #include "sword.h"
 
 int main() {
+    system("mode con cols=120 lines=30");
+    //cols = 칸/행 (가로)  lines = 줄/열 (세로)
     CursorVisible(0);
 	prologue();
 	title();
@@ -11,8 +13,6 @@ int main() {
 void prologue(void) {
 
 	SetColor(15);
-    printf("\n\n\n\n\n\n\n\n\n\n\n\t\t 실행 시 프로그램 창 레이아웃 크기를 120 * 30으로 맞추고 플레이해주세요. (press enter)");
-    getc(stdin);
 	system("cls");
 	printf("\n\n\n\n\n\n\n\n\n\n\n\t\t모험을 떠날 용사. 당신의 이름은 무엇인가? :    ");
 	scanf("%s", &j);
@@ -554,42 +554,13 @@ void MONSTER_D() {
 
 	system("cls");
 
+    int n = 0;
+	int m = 0;
 	int h = 0;
 
 	dungeon_title();
 
-	monster_Ddot();
-
-	SetColor(15);
-	gotoxy(16, 27); printf(" 1. 싸운다	2. 도망친다");
-	gotoxy(16, 26); printf(" 야생의 몬스터 [알] (이)가 습격해왔다. : ");
-	scanf("%d", &u);
-	getc(stdin);
-
-	if (u == 1) {
-		SetColor(15);
-		gotoxy(16, 27); printf("1 GOLD 가 드랍되었습니다.          ");
-		gotoxy(16, 26); printf(" 몬스터 [알] 를 쓰러트렸다!!                    ");
-		gold++;
-		getc(stdin);
-
-		h++;
-		return round;
-	}
-	else {
-		SetColor(15);
-		gotoxy(16, 27); printf("무사히 도망쳤다....           ");
-		gotoxy(16, 26); printf("............................            ");
-		getc(stdin);
-
-		h++;
-		return round();
-	}
-}
-void monster_Ddot() {
-	int n = 0;
-	int m = 0;
-
+    //D
 	SetColor(15);
 	char monsterd[15][15] = {
 		{0,0,0,0,0,0,1,1,1,0,0,0,0,0,0},
@@ -610,6 +581,7 @@ void monster_Ddot() {
 	};
 
 	for (n = 0; n < 15; n++) {
+        gotoxy(80, 6+n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
@@ -619,6 +591,39 @@ void monster_Ddot() {
             }
 		}
 		printf("\n");
+	}
+	SetColor(15);
+	gotoxy(16, 27); printf(" 1. 싸운다	2. 도망친다");
+	gotoxy(16, 26); printf(" 야생의 몬스터 [알] (이)가 습격해왔다. : ");
+	scanf("%d", &u);
+	getc(stdin);
+
+	if (u == 1) {
+        if(Level < 5) {
+            SetColor(15);
+            gotoxy(16, 26); printf(" 몬스터 [알] (을)를 쓰러트리지 못했다            ");
+            gotoxy(16, 27); printf(" 2 GOLD를 잃습니다.           ");
+            gold = gold - 2;
+        }
+        if(Level >= 5) {
+            SetColor(15);
+            gotoxy(16, 27); printf(" 1 GOLD 가 드랍되었습니다.          ");
+            gotoxy(16, 26); printf(" 몬스터 [알] 를 쓰러트렸다!!                    ");
+            gold++;
+        }
+		getc(stdin);
+
+		h++;
+		return round;
+	}
+	else {
+		SetColor(15);
+		gotoxy(16, 27); printf("무사히 도망쳤다....           ");
+		gotoxy(16, 26); printf("............................            ");
+		getc(stdin);
+
+		h++;
+		return round();
 	}
 }
 void MONSTER_C() {
@@ -631,7 +636,7 @@ void MONSTER_C() {
 	dungeon_title();
 
 	//c
-	SetColor(12);
+	SetColor(15);
 	char monsterd[15][15] = {
 		{ 0,0,0,0,0,1,1,1,1,1,1,0,0,0,0 },
 		{ 0,0,0,0,1,0,0,0,0,0,0,1,0,0,0 },
@@ -651,6 +656,7 @@ void MONSTER_C() {
 	};
 
 	for (n = 0; n < 15; n++) {
+        gotoxy(80, 6+n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
@@ -669,11 +675,18 @@ void MONSTER_C() {
 	getc(stdin);
 
 	if (y == 1) {
-		SetColor(15);
-		gotoxy(16, 27); printf("2 GOLD 가 드랍되었습니다.          ");
-		gotoxy(16, 26); printf("새끼 몬스터를 쓰러트렸다!!                    ");
-		gold = gold + 2;
-		getc(stdin);
+        if(Level < 10) {
+            SetColor(15);
+            gotoxy(16, 27); printf("5 GOLD 잃습니다.          ");
+            gotoxy(16, 26); printf("새끼 몬스터를 쓰러트리지 못했다...                    ");
+            gold = gold + 2;
+            getc(stdin);
+        }
+        if(Level >= 10) {
+            SetColor(15);
+            gotoxy(16, 27); printf("2 GOLD 가 드랍되었습니다.          ");
+            gotoxy(16, 26); printf("새끼 몬스터를 쓰러트렸다!!                    ");
+        }
 
 		h++;
 		return round;
@@ -698,7 +711,7 @@ void MONSTER_B() {
 	dungeon_title();
 
 	//B
-	SetColor(5);
+	SetColor(15);
 	char monsterd[15][15] = {
 		{ 0,0,0,0,1,1,1,1,1,0,0,1,1,1,0 },
 		{ 1,1,0,1,1,1,1,1,1,1,1,1,1,1,0 },
@@ -717,6 +730,7 @@ void MONSTER_B() {
 		{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1 }
 	};
 	for (n = 0; n < 15; n++) {
+        gotoxy(80, 6+n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
@@ -764,7 +778,7 @@ void MONSTER_A() {
 	dungeon_title();
 
 	//A
-	SetColor(9);
+	SetColor(15);
 	char monsterd[15][15] = {
 		{ 0,0,1,1,0,0,0,0,0,0,0,0,1,1,0 },
 		{ 0,0,1,0,1,0,1,1,1,1,1,1,0,1,0 },
@@ -783,6 +797,7 @@ void MONSTER_A() {
 		{ 0,0,1,1,1,1,1,1,1,1,1,1,1,1,0 }
 	};
 	for (n = 0; n < 15; n++) {
+        gotoxy(80, 6+n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");

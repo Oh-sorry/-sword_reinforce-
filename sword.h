@@ -20,7 +20,6 @@ void dungeon_title(void);	//带傈 力格
 void dungeon_side(void);	//带傈 - 抛滴府
 							//带傈 扼款靛 可记 格废
 void MONSTER_D(void);
-void monster_Ddot(void);
 void MONSTER_C(void);
 void MONSTER_B(void);
 void MONSTER_A(void);
