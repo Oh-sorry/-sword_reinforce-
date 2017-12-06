@@ -1,7 +1,7 @@
 #include "sword.h"
 
 int main() {
-    system("mode con cols=120 lines=30");
+    system("mode con cols=120 lines=30"); //레이아웃 창 크기 설정
     //cols = 칸/행 (가로)  lines = 줄/열 (세로)
     CursorVisible(0);
 	prologue();
@@ -981,9 +981,9 @@ void sword_dot1() {
 		{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
 	};
 	for (n = 0; n < 19; n++) {
+        gotoxy(49, 4+n);
 		for (m = 0; m < 19; m++) {
 			if (monsterd[n][m] == 1) {
-				gotoxy(m + 49, n + 4);
 				printf("/");
 			}
 			else {
