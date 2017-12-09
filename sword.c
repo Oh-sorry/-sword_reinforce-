@@ -1,9 +1,9 @@
 #include "sword.h"
 
 int main() {
-    system("mode con cols=120 lines=30"); //레이아웃 창 크기 설정
-    //cols = 칸/행 (가로)  lines = 줄/열 (세로)
-    CursorVisible(0);
+	system("mode con cols=120 lines=30"); //레이아웃 창 크기 설정
+										  //cols = 칸/행 (가로)  lines = 줄/열 (세로)
+	CursorVisible(0);
 	prologue();
 	title();
 	menu();
@@ -206,7 +206,7 @@ void menu() {
 		gotoxy(52, 21); printf("│                                    │\n");
 		gotoxy(52, 22); printf("│                                    │\n");
 		gotoxy(52, 23); printf("└──────────────────┘\n");
-
+		gotoxy(80, 4); printf("Lv : %d", Level);
 		gotoxy(90, 4); printf("나무 : %d", wood);
 		gotoxy(100, 4); printf("골드 : %d", gold);
 		gotoxy(12, 18); printf(" 나무 1 골드 5가 지급됩니다.");
@@ -273,7 +273,7 @@ void store() {
 	gotoxy(47, 23); printf("3");
 
 	gotoxy(58, 23); printf(" 나간다");
-
+	gotoxy(80, 4); printf("Lv : %d", Level);
 	gotoxy(90, 4); printf("나무 : %d", wood);
 	gotoxy(100, 4); printf("골드 : %d", gold);
 
@@ -294,11 +294,11 @@ void store() {
 		gotoxy(58, 23); printf(" 나간다");
 
 		if (gold < 5) {
-            system("cls");
-            store_side();
-            SetColor(15);
-            gotoxy(52, 15); printf("골드가 부족합니다.");
-            Sleep(1000);
+			system("cls");
+			store_side();
+			SetColor(15);
+			gotoxy(52, 15); printf("골드가 부족합니다.");
+			Sleep(1000);
 			return store();
 		}
 		else {
@@ -325,11 +325,11 @@ void store() {
 		gotoxy(58, 23); printf(" 나간다");
 
 		if (wood < 1) {
-            system("cls");
-            store_side();
-            SetColor(15);
-            gotoxy(52, 15); printf("나무가 부족합니다.");
-            Sleep(1000);
+			system("cls");
+			store_side();
+			SetColor(15);
+			gotoxy(52, 15); printf("나무가 부족합니다.");
+			Sleep(1000);
 			return store();
 		}
 		else {
@@ -387,14 +387,14 @@ void store_side() {
 	}
 }
 void dungeon() {
-    h = 0;
+	h = 0;
 	dungeon_ent();
 	round();
 }
 void dungeon_ent() {
 	system("cls");
 
-    char enter[25] = "Entering the dungeon...";
+	char enter[25] = "Entering the dungeon...";
 
 	int enter_key = 0;
 
@@ -402,9 +402,9 @@ void dungeon_ent() {
 
 	SetColor(15);
 	gotoxy(44, 19);
-	for(enter_key = 0; enter_key < 25; enter_key++) {
-        printf("%c", enter[enter_key]);
-        Sleep(100);
+	for (enter_key = 0; enter_key < 25; enter_key++) {
+		printf("%c", enter[enter_key]);
+		Sleep(100);
 	}
 	Sleep(2000);
 	gotoxy(44, 26); printf("DDu Dun!");
@@ -532,7 +532,7 @@ void dungeon_title() {
 
 	SetColor(15);
 	gotoxy(16, 20); printf(" < 용사 > %s", j);
-
+	gotoxy(80, 4); printf("Lv : %d", Level);
 	gotoxy(90, 4); printf("나무 : %d", wood);
 	gotoxy(100, 4); printf("골드 : %d", gold);
 
@@ -564,41 +564,41 @@ void MONSTER_D() {
 
 	system("cls");
 
-    int n = 0;
+	int n = 0;
 	int m = 0;
 	int h = 0;
 
 	dungeon_title();
 
-    //D
+	//D
 	SetColor(15);
 	char monsterd[15][15] = {
-		{0,0,0,0,0,0,1,1,1,0,0,0,0,0,0},
-		{0,0,0,0,0,1,0,0,0,1,0,0,0,0,0},
-		{0,0,0,0,1,1,0,0,0,1,1,0,0,0,0},
-		{0,0,0,1,1,0,0,0,0,0,1,1,0,0,0},
-		{0,0,1,0,0,0,0,0,1,1,0,0,1,0,0},
-		{0,1,1,0,0,0,0,0,1,1,0,0,1,1,0},
-		{0,1,1,0,0,0,0,0,0,0,0,0,1,1,0},
-		{0,1,1,0,0,0,1,1,1,0,0,0,1,1,0},
-		{0,1,0,0,0,0,1,1,1,0,0,0,0,1,0},
-		{0,1,0,0,0,0,1,1,1,0,0,0,0,1,0},
-		{0,0,1,0,0,0,0,0,0,0,0,0,1,0,0},
-		{0,0,0,1,0,0,0,0,0,0,0,1,0,0,0},
-		{0,0,0,0,1,1,0,0,0,1,1,0,0,0,0},
-		{0,0,0,0,0,1,1,1,1,1,0,0,0,0,0},
-		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+		{ 0,0,0,0,0,0,1,1,1,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,1,0,0,0,1,0,0,0,0,0 },
+		{ 0,0,0,0,1,1,0,0,0,1,1,0,0,0,0 },
+		{ 0,0,0,1,1,0,0,0,0,0,1,1,0,0,0 },
+		{ 0,0,1,0,0,0,0,0,1,1,0,0,1,0,0 },
+		{ 0,1,1,0,0,0,0,0,1,1,0,0,1,1,0 },
+		{ 0,1,1,0,0,0,0,0,0,0,0,0,1,1,0 },
+		{ 0,1,1,0,0,0,1,1,1,0,0,0,1,1,0 },
+		{ 0,1,0,0,0,0,1,1,1,0,0,0,0,1,0 },
+		{ 0,1,0,0,0,0,1,1,1,0,0,0,0,1,0 },
+		{ 0,0,1,0,0,0,0,0,0,0,0,0,1,0,0 },
+		{ 0,0,0,1,0,0,0,0,0,0,0,1,0,0,0 },
+		{ 0,0,0,0,1,1,0,0,0,1,1,0,0,0,0 },
+		{ 0,0,0,0,0,1,1,1,1,1,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
 	};
 
 	for (n = 0; n < 15; n++) {
-        gotoxy(80, 6+n);
+		gotoxy(80, 6 + n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
 			}
-            if(monsterd[n][m] == 0) {
-                printf("  ");
-            }
+			if (monsterd[n][m] == 0) {
+				printf("  ");
+			}
 		}
 		printf("\n");
 	}
@@ -609,23 +609,23 @@ void MONSTER_D() {
 	Sleep(1000);
 
 	if (u == 1) {
-        if(Level < 5) {
-            SetColor(15);
-            gotoxy(16, 26); printf(" 몬스터 [알] (을)를 쓰러트리지 못했다.(강화수치가 낮습니다.)");
-            gotoxy(16, 27); printf(" 2 GOLD를 잃습니다.           ");
-            gold = gold - 2;
-            if(gold < 0) {
-                gold = 0;
-            }
-            Sleep(2000);
-        }
-        if(Level >= 5) {
-            SetColor(15);
-            gotoxy(16, 27); printf(" 1 GOLD 가 드랍되었습니다.          ");
-            gotoxy(16, 26); printf(" 몬스터 [알] 를 쓰러트렸다!!                    ");
-            gold++;
-            Sleep(2000);
-        }
+		if (Level < 5) {
+			SetColor(15);
+			gotoxy(16, 26); printf(" 몬스터 [알] (을)를 쓰러트리지 못했다.(강화수치가 낮습니다.)");
+			gotoxy(16, 27); printf(" 2 GOLD를 잃습니다.           ");
+			gold = gold - 2;
+			if (gold < 0) {
+				gold = 0;
+			}
+			Sleep(2000);
+		}
+		if (Level >= 5) {
+			SetColor(15);
+			gotoxy(16, 27); printf(" 1 GOLD 가 드랍되었습니다.          ");
+			gotoxy(16, 26); printf(" 몬스터 [알] 를 쓰러트렸다!!                    ");
+			gold++;
+			Sleep(2000);
+		}
 		h++;
 		return round;
 	}
@@ -633,7 +633,7 @@ void MONSTER_D() {
 		SetColor(15);
 		gotoxy(16, 27); printf("무사히 도망쳤다....           ");
 		gotoxy(16, 26); printf("............................            ");
-		getc(stdin);
+		Sleep(2000);
 
 		h++;
 		return round();
@@ -669,14 +669,14 @@ void MONSTER_C() {
 	};
 
 	for (n = 0; n < 15; n++) {
-        gotoxy(80, 6+n);
+		gotoxy(80, 6 + n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
 			}
-            if(monsterd[n][m] == 0) {
-                printf("  ");
-            }
+			if (monsterd[n][m] == 0) {
+				printf("  ");
+			}
 		}
 		printf("\n");
 	}
@@ -688,23 +688,23 @@ void MONSTER_C() {
 	Sleep(1000);
 
 	if (y == 1) {
-        if(Level < 10) {
-            SetColor(15);
-            gotoxy(16, 27); printf("5 GOLD 잃습니다.          ");
-            gotoxy(16, 26); printf("새끼 몬스터를 쓰러트리지 못했다.(강화수치가 낮습니다.)              ");
-            gold = gold - 5;
-            if(gold < 0) {
-                gold = 0;
-            }
-            Sleep(2000);
-        }
-        if(Level >= 10) {
-            SetColor(15);
-            gotoxy(16, 27); printf("2 GOLD 가 드랍되었습니다.          ");
-            gotoxy(16, 26); printf("새끼 몬스터를 쓰러트렸다!!                    ");
-            gold = gold + 2;
-            Sleep(2000);
-        }
+		if (Level < 10) {
+			SetColor(15);
+			gotoxy(16, 27); printf("5 GOLD 잃습니다.          ");
+			gotoxy(16, 26); printf("새끼 몬스터를 쓰러트리지 못했다.(강화수치가 낮습니다.)              ");
+			gold = gold - 5;
+			if (gold < 0) {
+				gold = 0;
+			}
+			Sleep(2000);
+		}
+		if (Level >= 10) {
+			SetColor(15);
+			gotoxy(16, 27); printf("2 GOLD 가 드랍되었습니다.          ");
+			gotoxy(16, 26); printf("새끼 몬스터를 쓰러트렸다!!                    ");
+			gold = gold + 2;
+			Sleep(2000);
+		}
 		h++;
 		return round;
 	}
@@ -747,14 +747,14 @@ void MONSTER_B() {
 		{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1 }
 	};
 	for (n = 0; n < 15; n++) {
-        gotoxy(80, 6+n);
+		gotoxy(80, 6 + n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
 			}
-            if(monsterd[n][m] == 0) {
-                printf("  ");
-            }
+			if (monsterd[n][m] == 0) {
+				printf("  ");
+			}
 		}
 		printf("\n");
 	}
@@ -766,23 +766,23 @@ void MONSTER_B() {
 	Sleep(1000);
 
 	if (o == 1) {
-        if(Level < 15) {
-            SetColor(15);
-            gotoxy(16, 27); printf("10 GOLD 를 잃습니다.               ");
-            gotoxy(16, 26); printf("큰 몬스터를 쓰러트리지 못했다.(강화수치가 낮습니다.)            ");
-            gold = gold - 10;
-            if(gold < 0) {
-                gold = 0;
-            }
-            Sleep(2000);
-        }
-        if(Level >= 15) {
-            SetColor(15);
-            gotoxy(16, 27); printf("3 GOLD 가 드랍되었습니다.          ");
-            gotoxy(16, 26); printf("큰 몬스터를 쓰러트렸다!!                    ");
-            gold = gold + 3;
-            Sleep(2000);
-        }
+		if (Level < 15) {
+			SetColor(15);
+			gotoxy(16, 27); printf("10 GOLD 를 잃습니다.               ");
+			gotoxy(16, 26); printf("큰 몬스터를 쓰러트리지 못했다.(강화수치가 낮습니다.)            ");
+			gold = gold - 10;
+			if (gold < 0) {
+				gold = 0;
+			}
+			Sleep(2000);
+		}
+		if (Level >= 15) {
+			SetColor(15);
+			gotoxy(16, 27); printf("3 GOLD 가 드랍되었습니다.          ");
+			gotoxy(16, 26); printf("큰 몬스터를 쓰러트렸다!!                    ");
+			gold = gold + 3;
+			Sleep(2000);
+		}
 		h++;
 		return round;
 	}
@@ -824,14 +824,14 @@ void MONSTER_A() {
 		{ 0,0,1,1,1,1,1,1,1,1,1,1,1,1,0 }
 	};
 	for (n = 0; n < 15; n++) {
-        gotoxy(80, 6+n);
+		gotoxy(80, 6 + n);
 		for (m = 0; m < 15; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("■");
 			}
-            if(monsterd[n][m] == 0) {
-                printf("  ");
-            }
+			if (monsterd[n][m] == 0) {
+				printf("  ");
+			}
 		}
 		printf("\n");
 	}
@@ -843,23 +843,23 @@ void MONSTER_A() {
 	Sleep(1000);
 
 	if (p == 1) {
-        if(Level < 20) {
-            SetColor(15);
-            gotoxy(16, 27); printf("12 GOLD를 잃습니다.  ㅠㅠ        ");
-            gotoxy(16, 26); printf("엄청 큰 몬스터에게 당했습니다.(강화수치가 낮습니다.)              ");
-            gold = gold - 12;
-            if(gold < 0) {
-                gold = 0;
-            }
-            Sleep(2000);
-        }
-        if(Level >= 20) {
-            SetColor(15);
-            gotoxy(16, 27); printf("5 GOLD 가 드랍되었습니다.          ");
-            gotoxy(16, 26); printf("엄청 큰 몬스터를 쓰러트렸다!!                 ");
-            gold = gold + 5;
-            Sleep(2000);
-        }
+		if (Level < 20) {
+			SetColor(15);
+			gotoxy(16, 27); printf("12 GOLD를 잃습니다.  ㅠㅠ        ");
+			gotoxy(16, 26); printf("엄청 큰 몬스터에게 당했습니다.(강화수치가 낮습니다.)              ");
+			gold = gold - 12;
+			if (gold < 0) {
+				gold = 0;
+			}
+			Sleep(2000);
+		}
+		if (Level >= 20) {
+			SetColor(15);
+			gotoxy(16, 27); printf("5 GOLD 가 드랍되었습니다.          ");
+			gotoxy(16, 26); printf("엄청 큰 몬스터를 쓰러트렸다!!                 ");
+			gold = gold + 5;
+			Sleep(2000);
+		}
 		h++;
 		return round;
 	}
@@ -876,24 +876,24 @@ void get_wood() {
 
 	dungeon_title();
 
-    int n = 0;
-    int m = 0;
+	int n = 0;
+	int m = 0;
 
-    char wood_dot[4][17] = {
-        {1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,1,0},
-        {1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1},
-        {0,1,0,1,0,0,1,0,1,0,1,0,1,0,1,0,1},
-        {0,1,0,1,0,0,0,1,0,0,0,1,0,0,1,1,0}
-    };
-    for (n = 0; n < 4; n++) {
-        gotoxy(76, 12+n);
+	char wood_dot[4][17] = {
+		{ 1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,1,0 },
+		{ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 },
+		{ 0,1,0,1,0,0,1,0,1,0,1,0,1,0,1,0,1 },
+		{ 0,1,0,1,0,0,0,1,0,0,0,1,0,0,1,1,0 }
+	};
+	for (n = 0; n < 4; n++) {
+		gotoxy(76, 12 + n);
 		for (m = 0; m < 17; m++) {
 			if (wood_dot[n][m] == 1) {
 				printf("■");
 			}
-            if(wood_dot[n][m] == 0) {
-                printf("  ");
-            }
+			if (wood_dot[n][m] == 0) {
+				printf("  ");
+			}
 		}
 		printf("\n");
 	}
@@ -912,25 +912,25 @@ void bang() {
 
 	dungeon_title();
 
-    int n = 0;
-    int m = 0;
+	int n = 0;
+	int m = 0;
 
-    char bang_dot[5][18] = {
-        {1,1,0,0,1,1,1,0,1,0,0,0,1,0,1,1,1,1},
-        {1,0,1,0,1,0,1,0,1,1,0,0,1,0,1,0,0,0},
-        {1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,1},
-        {1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1},
-        {1,1,0,0,1,0,1,0,1,0,0,1,1,0,1,1,1,1}
-    };
-    for (n = 0; n < 5; n++) {
-        gotoxy(76, 12+n);
+	char bang_dot[5][18] = {
+		{ 1,1,0,0,1,1,1,0,1,0,0,0,1,0,1,1,1,1 },
+		{ 1,0,1,0,1,0,1,0,1,1,0,0,1,0,1,0,0,0 },
+		{ 1,1,0,0,1,1,1,0,1,0,1,0,1,0,1,0,1,1 },
+		{ 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1 },
+		{ 1,1,0,0,1,0,1,0,1,0,0,1,1,0,1,1,1,1 }
+	};
+	for (n = 0; n < 5; n++) {
+		gotoxy(76, 12 + n);
 		for (m = 0; m < 18; m++) {
 			if (bang_dot[n][m] == 1) {
 				printf("■");
 			}
-            if(bang_dot[n][m] == 0) {
-                printf("  ");
-            }
+			if (bang_dot[n][m] == 0) {
+				printf("  ");
+			}
 		}
 		printf("\n");
 	}
@@ -939,9 +939,9 @@ void bang() {
 	gotoxy(16, 26); printf("                                 ");
 
 	gold = gold - 1;
-    if(gold < 0) {
-                gold = 0;
-    }
+	if (gold < 0) {
+		gold = 0;
+	}
 	Sleep(2000);
 
 	h++;
@@ -964,6 +964,7 @@ void upgrade() {
 	system("cls");
 	upgrade_side();
 	SetColor(15);
+	gotoxy(80, 4); printf("Lv : %d", Level);
 	gotoxy(90, 4); printf("나무 : %d", wood);
 	gotoxy(100, 4); printf("골드 : %d", gold);
 	gotoxy(22, 13); printf("1. 검을 강화한다!");
@@ -974,6 +975,13 @@ void upgrade() {
 
 	switch (t) {
 	case 1:
+		wood = wood - 1;
+		if (wood < 0) {
+			system("cls");
+			upgrade_side();
+			gotoxy(40, 8); printf("나무가 부족합니다. 상점 또는 던전에서 얻을 수 있습니다.");
+			wood = 0;
+		}
 		reinforce();
 		break;
 	case 2:
@@ -1027,8 +1035,11 @@ void reinforce() {
 	if (!strcmp(yorn, "no")) {
 		return upgrade();
 	}
-	if (!strcmp(yorn, "yes")) {
+	else if (!strcmp(yorn, "yes")) {
 		result();
+	}
+	else {
+		return reinforce();
 	}
 }
 void sword_dot1() {
@@ -1059,7 +1070,7 @@ void sword_dot1() {
 		{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
 	};
 	for (n = 0; n < 19; n++) {
-        gotoxy(49, 4+n);
+		gotoxy(49, 4 + n);
 		for (m = 0; m < 19; m++) {
 			if (monsterd[n][m] == 1) {
 				printf("/");
@@ -1080,8 +1091,8 @@ void talk() {
 	system("cls");
 
 	upgrade_side();
-    SetColor(15);
-	char talk[8][34] = { "Hello welcome~", "i'm J.J", "i'm the owner of here", "and brra~ brra~~...", ".....................","and then.. get your sword upgrade", "follow me! young boy!", "and i'll get you gold"};
+	SetColor(15);
+	char talk[8][34] = { "Hello welcome~", "i'm J.J", "i'm the owner of here", "and brra~ brra~~...", ".....................","and then.. get your sword upgrade", "follow me! young boy!", "and i'll give you gold" };
 
 	for (n = 0; n < 8; n++) {
 		for (m = 0; m < 34; m++) {
@@ -1099,13 +1110,51 @@ void talk() {
 	return upgrade();
 }
 void result() {
-    system("cls");
-    upgrade_side();
-    SetColor(15);
-    gotoxy(90, 4); printf("나무 : %d", wood);
-    gotoxy(100, 4); printf("골드 : %d", gold);
-    gotoxy(40, 27); printf("강화 하는데 골드 2개가 소모됩니다.");
+	system("cls");
+	upgrade_side();
+	SetColor(15);
+	gotoxy(80, 4); printf("Lv : %d", Level);
+	gotoxy(90, 4); printf("나무 : %d", wood);
+	gotoxy(100, 4); printf("골드 : %d", gold);
 
-    getc(stdin);
-    return reinforce();
+	gotoxy(40, 27); printf("강화 하는데 골드 2개가 소모됩니다.");
+	Sleep(2000);
+	if (gold < 2) {
+		system("cls");
+		upgrade_side();
+		SetColor(15);
+		gotoxy(40, 8); printf("골드가 부족합니다. 상점이나 던전에서 얻을 수 잇습니다.");
+		Sleep(2000);
+		return reinforce();
+	}
+	else {
+		gold = gold - 2;
+
+		srand((unsigned)time(NULL));
+
+		b = rand() % 100;
+
+		if (b < 99 - (3 * Level)) {
+			Level = Level + 1;
+			system("cls");
+			upgrade_side();
+			SetColor(15);
+			gotoxy(45, 25); printf("강화에 성공하였습니다. 강화 수치를 얻습니다.");
+			sword_dot1();
+			Sleep(2000);
+			return reinforce();
+		}
+		else {
+			Level = Level - 1;
+			system("cls");
+			upgrade_side();
+			SetColor(15);
+			gotoxy(45, 25); printf("강화에 실패하였습니다. 강화 수치를 잃습니다.");
+			Sleep(2000);
+			return reinforce();
+		}
+	}
+
+	getc(stdin);
+	return reinforce();
 }

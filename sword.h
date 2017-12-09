@@ -31,18 +31,20 @@ void reinforce(void);	//강화
 void sword_dot1(void);
 void talk(void);	//대장장이와 이야기
 void result(void);
-					//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 int key;
-int i = 0;
 int k, u, y, o, p, t;
 int h = 0;
 int a;				//라운드 난수 입력
-char j[20];			//주인공 이름
+int b = 0;              //강화 확률
+int i = 0;
+char j[20];			    //주인공 이름
 int wood = 1;			//나무 막대기 - 상점 구매, 드랍
 int gold = 5;			//골드
 int sword = 0;			//검
 int Level = 0;			//강화 수치
 char yorn[5];			//yes or no
+
 
 enum {
 	BLACK,
